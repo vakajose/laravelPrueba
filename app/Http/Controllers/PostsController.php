@@ -2,6 +2,7 @@
 
 namespace sisCRM\Http\Controllers;
 
+use sisCRM\post;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -11,12 +12,18 @@ class PostsController extends Controller
     public function index()
     {
     	
-		return view('posts.index');
+    	$posts =post::all();
+		return view('posts.index')->with(['posts'=>$posts]);
 	}
 
-	public function show($id)
+	public function show($postId)
 	{
-		return view('posts.show');
+		//dd($post);
+
+		$post = post::find($postId);
+
+		return view('posts.show') -> with(['post'=>$post]);
+	
 	}
 
 }
