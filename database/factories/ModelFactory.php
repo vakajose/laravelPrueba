@@ -22,3 +22,14 @@ $factory->define(sisCRM\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(sisCRM\post::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'title' => $faker->sentence,
+        'description' => $faker->paragraph,
+        'url' => $faker->url
+    ];
+});
